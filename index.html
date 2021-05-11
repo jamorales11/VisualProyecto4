@@ -10,6 +10,7 @@
       integrity="sha384-wEmeIV1mKuiNpC+IOBjI7aAzPcEZeedi5yW5f2yOq55WWLwNGmvvx4Um1vskeMj0"
       crossorigin="anonymous"
     />
+    <link href="style.css" rel="stylesheet" />
     <script
       src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"
       integrity="sha384-p34f1UUtsS3wqzfto5wAAmdvj+osOnFyQFpp4Ua3gs/ZVWx6oOypYoCJhGGScy+8"
@@ -28,7 +29,7 @@
           <div class="row">
             <h2>Video</h2>
             <div class="col-2"></div>
-            <div class="col">
+            <div class="col videos">
               <iframe
                 width="560"
                 height="315"
@@ -52,7 +53,7 @@
                   Geometry Shaders:
                 </p>
               </div>
-              <div class="col">
+              <div class="col videos">
                 <iframe
                   width="560"
                   height="315"
@@ -65,7 +66,7 @@
               </div>
             </div>
             <div class="row">
-              <div class="col">
+              <div class="col videos">
                 <iframe
                   width="560"
                   height="315"
@@ -98,7 +99,52 @@
           <div class="row"></div>
 
           <div class="row">
-            <h2>Modificación</h2>
+            <h2>Modificaciones</h2>
+            <p>
+              A partir de los shaders propuestos se relizaron un par de cambios.
+              Para el plano dónde se renderizó el pasto, lo que se hizo fue
+              crear 2 propiedades nuevas: "Strength" y "Speed". El primero
+              representa la fuerza del oleaje que se ve reflejado en el tamaño
+              de la cresta de las olas y el segundo que representa la frecuencia
+              de estas.
+            </p>
+            <p>
+              Entonces lo que se procede a hacer es tomar el input del vertex
+              shader, específicamente la matriz de posición de cada vértice en
+              el espacio del objeto. Luego se procede a realizar una
+              multiplicación de matrices entre la matriz obtenida anteriormente
+              y la matriz del modelo actual (que se obtiene a partir de la
+              variable global de Unity unity_ObjectToWorld) para obtener como
+              resultado la posición en el mundo del objeto. Una vez se tiene
+              este vector resultante se calcula un valor de desplazamiento
+              sumando el coseno del componente en 'y', más el coseno del
+              componente en 'x' sumado al producto entre el valor del input de
+              Speed y del tiempo.
+            </p>
+            <p>
+              Luego al valor calculado de desplazamiento le multiplico el valor
+              ingresado de 'Strength' y uso este producto para sumarselo a la
+              componente en 'y'. Logrando así que mientras el componente 'y'
+              pueda tomar valores entre 1 y -1 en función del desplazamiento
+              calculado, el cuál a su vez se va moviendo en función del tiempo.
+              Para finalizar se le asigna el resultado del producto de matrices
+              entre la posición modificada del objeto en el mundo y la matriz de
+              la vista * proyección que se obtiene a partir de la variable
+              global UNITY_MATRIX_VP.
+            </p>
+            <p>
+              Además de lo anteriormente mencionado también se realizó una
+              modificación en la renderización de la esfera: en la función de la
+              geometría, dónde se toma el output de la Vertex Function, es
+              decir, la normal y una posición global de cada vértice de cada
+              triángulo para encontrar el centro de cada uno y a partir de este
+              poder generar y estirar o recoger la normal en función del valor
+              del input de la propiedad '_PyramidHeight', y lo que se hizo
+              adicional fue multiplicar este valor por el tiempo ya este
+              producto sacarle el coseno para conseguir el efecto logrado en el
+              que en función del tiempo ciertas secciones de la esfera generan
+              pirámides.
+            </p>
           </div>
         </div>
         <div class="col-2"></div>
