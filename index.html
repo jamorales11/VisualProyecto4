@@ -20,28 +20,88 @@
   <body>
     <div class="container-fluid">
       <div class="row">
-        <h1>Un pipeline extendido y/o modificado</h1>
-      </div>
-      <div class="row">
-        <h2>Video</h2>
-        <iframe
-          width="560"
-          height="315"
-          src="https://www.youtube.com/embed/rI0Sg26hf6k"
-          title="YouTube video player"
-          frameborder="0"
-          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-          allowfullscreen
-        ></iframe>
-      </div>
-      <div class="row">
-        <h2>Shader Base</h2>
-      </div>
-      <div class="row">
-        <h3>Descripción</h3>
-      </div>
-      <div class="row">
-        <h2>Modificación</h2>
+        <div class="col-2"></div>
+        <div class="col">
+          <div class="row">
+            <h1>Un pipeline extendido y/o modificado</h1>
+          </div>
+          <div class="row">
+            <h2>Video</h2>
+            <div class="col-2"></div>
+            <div class="col">
+              <iframe
+                width="560"
+                height="315"
+                src="https://www.youtube.com/embed/rI0Sg26hf6k"
+                title="YouTube video player"
+                frameborder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowfullscreen
+              ></iframe>
+            </div>
+            <div class="col-2"></div>
+          </div>
+          <div class="row">
+            <h2>Shaders Base</h2>
+            <div class="row">
+              <div class="col">
+                <p>
+                  Para este proyecto se utilizaron esencialmente 2 shaders: El
+                  primero se basó en el encontrado en este tutorial para
+                  escribir y renderizar pasto a partir de texturas de ruido y
+                  Geometry Shaders:
+                </p>
+              </div>
+              <div class="col">
+                <iframe
+                  width="560"
+                  height="315"
+                  src="https://www.youtube.com/embed/YghAbgCN8XA"
+                  title="YouTube video player"
+                  frameborder="0"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                  allowfullscreen
+                ></iframe>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col">
+                <iframe
+                  width="560"
+                  height="315"
+                  src="https://www.youtube.com/embed/7C-mA08mp8o"
+                  title="YouTube video player"
+                  frameborder="0"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                  allowfullscreen
+                ></iframe>
+              </div>
+              <div class="col">
+                <p>
+                  Por otro lado se hizo uso también de este otro tutorial en el
+                  que también se usan Geometry Shaders para transformar cada
+                  triángulo del mesh en una pirámide tridimensional.
+                </p>
+                <p>
+                  Este recibe información cómo la normal y una posición global
+                  de cada vértice de cada triángulo a partir del output de la
+                  Vertex Function del shader y utiliza dicha información para
+                  generar un número variable de vértices arreglados como
+                  triángulos para remover u agregar nuevos triángulos al mesh
+                  antes de enviarle su output al Fragment Shader, generando así
+                  esencialmente lo que son pirámides.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <div class="row"></div>
+
+          <div class="row">
+            <h2>Modificación</h2>
+          </div>
+        </div>
+        <div class="col-2"></div>
       </div>
     </div>
   </body>
