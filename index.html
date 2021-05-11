@@ -31,6 +31,7 @@
             <div class="col-2"></div>
             <div class="col videos">
               <iframe
+                class="responsive-iframe"
                 width="560"
                 height="315"
                 src="https://www.youtube.com/embed/rI0Sg26hf6k"
@@ -50,11 +51,33 @@
                   Para este proyecto se utilizaron esencialmente 2 shaders: El
                   primero se basó en el encontrado en este tutorial para
                   escribir y renderizar pasto a partir de texturas de ruido y
-                  Geometry Shaders:
+                  Geometry Shaders. Este consiste en básicamente lo siguiente:
+                  Se se usan 2 texturas diferentes que contrastan entre sí: una
+                  es white noise con textura principal, y otra es cloud noise.
+                  Estas se combinarán para crear el patrón del pasto en la
+                  Fragment Function. Y además se usará una tercera textura (que
+                  idealmente puede ser la misma de cloud noise) para simular el
+                  viento. En la vertex function solo se calculan la posición y
+                  la normal en el espacio del mundo. Esto para poder retornarlo
+                  vía output y pasarselo como parámetro a la Geometry Function.
+                  En esta se crearán los triángulos de las diferentes capas de
+                  pasto que se usarán y para cada una de estas se calcularán un
+                  porcentaje de altura, para así generar la ilusión de que el
+                  pasto es más denso abajo y conforme sube de capas lo es menos.
+                  Finalmente en la Fragment Function es dónde se usa la textura
+                  destinada para el viento y se aplica un offset en función del
+                  tiempo, una escala y un rango, además de conseguir que para
+                  las capas superiores el efecto sea más fuerte. Además es acá
+                  dónde, cómo ya se mencionó al principio, resulta tan útil las
+                  texturas de white noise y cloud noise combinadas: se usa para
+                  poder generar "huecos" en las capas de pasto y así poder
+                  descartar pixeles si el sample value combinado es demasiado
+                  bajo.
                 </p>
               </div>
               <div class="col videos">
                 <iframe
+                  class="responsive-iframe"
                   width="560"
                   height="315"
                   src="https://www.youtube.com/embed/YghAbgCN8XA"
@@ -68,6 +91,7 @@
             <div class="row">
               <div class="col videos">
                 <iframe
+                  class="responsive-iframe"
                   width="560"
                   height="315"
                   src="https://www.youtube.com/embed/7C-mA08mp8o"
